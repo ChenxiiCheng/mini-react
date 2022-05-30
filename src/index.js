@@ -1,17 +1,44 @@
-import React from 'react';
-import ReactDOM from 'react-dom/client';
-import './index.css';
-import App from './App';
-import reportWebVitals from './reportWebVitals';
+// import React from 'react';
+// import ReactDOM from 'react-dom/client';
 
-const root = ReactDOM.createRoot(document.getElementById('root'));
-root.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>
+// const root = ReactDOM.createRoot(document.getElementById('root'));
+// root.render(
+//   <React.StrictMode>
+//     <App />
+//   </React.StrictMode>
+// );
+
+import * as React from './mini-react';
+
+const element = React.createElement(
+	'div',
+	{
+		id: 'hw',
+		title: 'hello-world',
+		style: {
+			width: '100px',
+			height: '50px',
+			color: 'green',
+			textAlign: 'center',
+			border: '1px solid pink',
+		},
+	},
+	'Hello World',
+	React.createElement(
+		'a',
+		{ href: 'www.google.com', style: { color: 'red', marginLeft: '100px' } },
+		React.createElement(
+			'h3',
+			{ id: 'hehe-h3' },
+			React.createElement('div', { id: 'inner-div' })
+		)
+	)
 );
 
-// If you want to start measuring performance in your app, pass a function
-// to log results (for example: reportWebVitals(console.log))
-// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
-reportWebVitals();
+console.log('element = ', element);
+
+const container = document.querySelector('#root');
+React.render(element, container);
+
+// const root = ReactDOM.createRoot(document.getElementById('root'));
+// root.render(element);
